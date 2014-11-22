@@ -11,13 +11,13 @@ import me.abnerlee.wechatAPI.Accessor;
 @ClearInterceptor(ClearLayer.ALL)
 public class WeixinController extends Controller {
     public void weixin() {
+        String ret = "weixin";
         if (getPara("echostr") != null){
-            String ret = "";
             if (Accessor.checkSignature(this.getRequest())){
                 ret = getPara("echostr");
             }
-            renderText(ret);
         }
+        renderText(ret);
         return ;
     }
 }
