@@ -26,7 +26,7 @@ public class WeixinController extends Controller {
             System.out.println(msg.getToUserName());
             if (msg.getMsgType().equals("text")){
                 switch(msg.getContent()){
-                    case "noe news":
+                    case "one news":
                         List<Map<String, String>> news1 = new ArrayList<>();
 
                         Map<String, String> one1 = new HashMap<>();
@@ -52,6 +52,9 @@ public class WeixinController extends Controller {
 
                         ret = ConstructWechatXmlString.getNewsXml(msg.getFromUserName(), msg.getToUserName(), news2);
                         break;
+                    case "media1":
+                        ret = ConstructWechatXmlString.getPictureXml(msg.getFromUserName(), msg.getToUserName(), "H6edkrLruxra8Mk_Y8o0oPjierSh8F9PuShta4vJ1ZTl1P_8s2zgPvMu8wuLfSX4");
+                        break;
                     default:
                         ret = ConstructWechatXmlString.getTextXml(msg.getFromUserName(), msg.getToUserName(), "您发送了："+msg.getContent());
                         break;
@@ -62,6 +65,10 @@ public class WeixinController extends Controller {
         }
         renderText(ret);
         return ;
+    }
+
+    public void test(){
+        renderText("This is work");
     }
 
     public static void main(String[] args){
